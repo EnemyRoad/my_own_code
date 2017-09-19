@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <title>Cameras</title>
+</head>
+<body>
+</body>
+<div class="container">
+    <div class="row">
+        <div class="page-header"></div>
+        <div class="col-sm-12">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr align="center" bgcolor="#00CC66">
+                    <td><strong>Имя</strong></td>
+                    <td><strong>IP-Adress</strong></td>
+                    <td><strong>Vendor</strong></td>
+                    <td><strong>Reboot</strong></td>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for camera in Cameras %}
+                    <tr>
+                        <td align="center">{{ camera.name }}</td>
+                        <td align="center">{{ camera.ip }}</td>
+                        <td align="center">{{ camera.vendor }}</td>
+                        <td align="center">
+                            <a href="/reboot/{{ camera.id }}/" class="btn btn-success btn-md">REBOOT</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</html>

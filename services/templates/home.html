@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+{% block title %}
+    HOME
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center">За текущий месяц</div>
+            <div class="col-md-6 text-center">За предыдущий месяц</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <thead align="center">
+                    <td>Услуга:</td>
+                    <td>К оплате:</td>
+                    <td>Расходовано:</td>
+                    <td>Детальнее</td>
+                    </thead>
+                    {% for item in curr %}
+                        <tbody align="center">
+                        <td>{{ item.name.service.name }}</td>
+                        <td>{{ item.count }} грн.</td>
+                        <td>{{ item.delay }}</td>
+                        <td><a href="/{{ item.name.service.id_name }}/" class="btn btn-success">ТЫЦ</a></td>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <thead align="center">
+                    <td>Услуга:</td>
+                    <td>К оплате:</td>
+                    <td>Расходовано:</td>
+                    </thead>
+                    {% for item in prew %}
+                        <tbody align="center">
+                        <td>{{ item.name.service.name }}</td>
+                        <td>{{ item.count }} грн.</td>
+                        <td>{{ item.delay }}</td>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="/add/" class="btn btn-success">Внести показания</a>
+        </div>
+    </div>
+{% endblock %}
